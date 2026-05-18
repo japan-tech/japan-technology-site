@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './RequestForm.css';
 
-// Web3Forms access key — public, safe to embed in client code
 const WEB3FORMS_ACCESS_KEY = 'cf1b80e3-b929-466d-a839-abed3ea99cb1';
 
 const SERVICE_OPTIONS = [
@@ -26,7 +25,7 @@ export default function RequestForm() {
     details: '',
     contactPref: 'email',
   });
-  const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+  const [status, setStatus] = useState('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   function handleChange(e) {
@@ -39,8 +38,6 @@ export default function RequestForm() {
     setStatus('sending');
     setErrorMessage('');
 
-    // Build a payload Web3Forms understands.
-    // The "subject" includes the service type so we can see at a glance what each email is about.
     const serviceLabel = SERVICE_OPTIONS.find(s => s.value === formData.service)?.label || formData.service;
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
@@ -80,22 +77,11 @@ export default function RequestForm() {
         <div className="request-intro">
           <p className="eyebrow">Request a Service</p>
           <h2 className="section-title">Tell us what you're<br />looking for.</h2>
-          <p className="section-sub">
-            Fill out the form with as much detail as you can — make, model, year, condition, budget. We'll reply within 24 hours with options or follow-up questions.
-          </p>
+          <p className="section-sub">Fill out the form with as much detail as you can — make, model, year, condition, budget. We'll reply within 24 hours with options or follow-up questions.</p>
           <div className="request-direct">
             <p className="request-direct-label">Prefer direct contact?</p>
-            <a href="mailto:japantechnology@yandex.ru" className="request-direct-link">
-              <i className="ti ti-mail" aria-hidden="true"></i> japantechnology@yandex.ru
-            </a>
-            
-              href="https://wa.me/79147903057"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="request-direct-link"
-            >
-              <i className="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp (any language)
-            </a>
+            <a href="mailto:japantechnology@yandex.ru" className="request-direct-link"><i className="ti ti-mail" aria-hidden="true"></i> japantechnology@yandex.ru</a>
+            <a href="https://wa.me/79147903057" target="_blank" rel="noopener noreferrer" className="request-direct-link"><i className="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp (any language)</a>
           </div>
         </div>
 
@@ -103,64 +89,30 @@ export default function RequestForm() {
           <div className="form-row">
             <label className="form-field">
               <span className="form-label">Your Name *</span>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                placeholder="John Smith"
-              />
+              <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="John Smith" />
             </label>
             <label className="form-field">
               <span className="form-label">Email *</span>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                placeholder="you@example.com"
-              />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="you@example.com" />
             </label>
           </div>
 
           <div className="form-row">
             <label className="form-field">
               <span className="form-label">Phone / WhatsApp (optional)</span>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="+1 555 123 4567"
-              />
+              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+1 555 123 4567" />
             </label>
             <label className="form-field">
               <span className="form-label">Service *</span>
-              <select
-                name="service"
-                value={formData.service}
-                onChange={handleChange}
-                required
-              >
-                {SERVICE_OPTIONS.map(opt => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
+              <select name="service" value={formData.service} onChange={handleChange} required>
+                {SERVICE_OPTIONS.map(opt => (<option key={opt.value} value={opt.value}>{opt.label}</option>))}
               </select>
             </label>
           </div>
 
           <label className="form-field">
             <span className="form-label">What are you looking for? *</span>
-            <textarea
-              name="details"
-              value={formData.details}
-              onChange={handleChange}
-              required
-              rows={6}
-              placeholder="Example: 1995 Toyota Supra RZ, manual transmission, under 100,000 km, ideally in white or silver. Budget: 30,000-40,000 USD. Shipping to Cyprus."
-            />
+            <textarea name="details" value={formData.details} onChange={handleChange} required rows={6} placeholder="Example: 1995 Toyota Supra RZ, manual transmission, under 100,000 km, ideally in white or silver. Budget: 30,000-40,000 USD. Shipping to Cyprus." />
           </label>
 
           <label className="form-field">
@@ -168,13 +120,7 @@ export default function RequestForm() {
             <div className="radio-group">
               {CONTACT_PREFERENCES.map(opt => (
                 <label key={opt.value} className="radio-label">
-                  <input
-                    type="radio"
-                    name="contactPref"
-                    value={opt.value}
-                    checked={formData.contactPref === opt.value}
-                    onChange={handleChange}
-                  />
+                  <input type="radio" name="contactPref" value={opt.value} checked={formData.contactPref === opt.value} onChange={handleChange} />
                   <span>{opt.label}</span>
                 </label>
               ))}
@@ -193,11 +139,7 @@ export default function RequestForm() {
             </div>
           )}
 
-          <button
-            type="submit"
-            className="btn-primary form-submit"
-            disabled={status === 'sending'}
-          >
+          <button type="submit" className="btn-primary form-submit" disabled={status === 'sending'}>
             {status === 'sending' ? 'Sending…' : 'Submit Request'}
           </button>
         </form>
