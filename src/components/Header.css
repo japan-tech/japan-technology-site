@@ -1,0 +1,125 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: white;
+  transition: box-shadow var(--transition);
+}
+.site-header--scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  height: 76px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+/* Logo */
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: white;
+  flex-shrink: 0;
+}
+.site-logo-mark {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+.site-logo-wordmark {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  white-space: nowrap;
+}
+.site-logo-wordmark-accent {
+  color: var(--vermillion);
+}
+/* Nav */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+.site-nav-link {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #c8c8c8;
+  transition: color var(--transition);
+}
+.site-nav-link:hover { color: white; }
+.site-nav-cta {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: white;
+  background: var(--vermillion);
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--radius);
+  transition: background var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.site-nav-cta:hover { background: var(--vermillion-dark); }
+.site-nav-cta i { font-size: 14px; }
+/* Mobile menu toggle */
+.site-nav-toggle {
+  display: none;
+  color: white;
+  font-size: 28px;
+  padding: 4px;
+}
+/* Responsive */
+@media (max-width: 900px) {
+  .site-header-inner {
+    padding: 0 1.25rem;
+    height: 64px;
+  }
+  .site-logo-mark { width: 36px; height: 36px; }
+  .site-logo-wordmark { font-size: 0.78rem; letter-spacing: 0.1em; }
+  .site-nav-toggle { display: inline-flex; }
+  .site-nav {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--ink);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-top: 1px solid #1f1f1f;
+  }
+  .site-nav--open {
+    max-height: 500px;
+    padding: 1rem 0;
+  }
+  .site-nav-link {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #1f1f1f;
+    font-size: 0.95rem;
+  }
+  .site-nav-cta {
+    margin: 0.75rem 1.25rem;
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .site-logo-wordmark-accent { display: none; }
+}

@@ -1,0 +1,131 @@
+/* index.css — Japan Technology Co., Ltd. */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Core palette — matches Japan Technology Global auction site */
+  --ink:             #0f0f0f;
+  --ink-soft:        #1a1a1a;
+  --paper:           #f0e9d8;
+  --cream:           #faf6ec;
+  --white:           #ffffff;
+  --vermillion:      #d32f2f;
+  --vermillion-dark: #a93225;
+  --vermillion-soft: rgba(211, 47, 47, 0.27);
+  --gold-muted:      #8a7d5a;
+  --muted:           #6f6a5e;
+  --border:          #e0d6bc;
+  --success:         #2d7a3a;
+
+  /* Typography */
+  --font-display: 'Antonio', sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Misc */
+  --radius:     4px;
+  --transition: 0.18s ease;
+  --section-pad: 5rem 2rem;
+  --max-w: 1200px;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+input, textarea, select { font-family: inherit; }
+img { max-width: 100%; display: block; }
+
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1; }
+
+/* Reusable section components */
+.section {
+  padding: var(--section-pad);
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--vermillion);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+.btn-primary {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--vermillion);
+  color: white;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius);
+  transition: background var(--transition), transform var(--transition);
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--vermillion-dark); }
+
+.btn-secondary {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  display: inline-block;
+}
+.btn-secondary:hover { background: var(--ink); color: white; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+  :root { --section-pad: 3.5rem 1.25rem; }
+}

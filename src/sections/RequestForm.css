@@ -1,0 +1,189 @@
+.request-section {
+  background: var(--ink);
+  color: white;
+  padding: var(--section-pad);
+}
+.request-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: start;
+}
+.request-intro .section-title {
+  color: white;
+  font-size: clamp(1.85rem, 4.2vw, 2.85rem);
+  margin-bottom: 1.25rem;
+}
+.request-intro .section-sub {
+  color: #b8b8b8;
+  margin-bottom: 2rem;
+}
+.request-direct {
+  border-top: 1px solid #2a2a2a;
+  padding-top: 1.5rem;
+}
+.request-direct-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+.request-direct-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: #d4d4d4;
+  margin-right: 1.25rem;
+  margin-bottom: 0.5rem;
+  transition: color var(--transition);
+}
+.request-direct-link:hover { color: white; }
+.request-direct-link i { color: var(--vermillion); font-size: 18px; }
+
+/* Form */
+.request-form {
+  background: var(--ink-soft);
+  border: 1px solid #2a2a2a;
+  border-radius: var(--radius);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c8c8c8;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: var(--radius);
+  padding: 0.75rem 0.9rem;
+  color: white;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--vermillion);
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #555;
+}
+.form-field select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23999' d='M1 1l5 5 5-5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.25rem;
+}
+.form-field textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.5;
+}
+
+/* Radio group */
+.radio-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6rem 1rem;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 0.88rem;
+  color: #c8c8c8;
+}
+.radio-label:has(input:checked) {
+  background: var(--vermillion);
+  border-color: var(--vermillion);
+  color: white;
+}
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Submit */
+.form-submit {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Messages */
+.form-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.form-message i { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.form-message--success {
+  background: rgba(45, 122, 58, 0.15);
+  border: 1px solid rgba(45, 122, 58, 0.4);
+  color: #8ed09e;
+}
+.form-message--success i { color: #4cb868; }
+.form-message--error {
+  background: rgba(211, 47, 47, 0.12);
+  border: 1px solid rgba(211, 47, 47, 0.4);
+  color: #ff9999;
+}
+.form-message--error i { color: var(--vermillion); }
+
+@media (max-width: 900px) {
+  .request-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .request-form {
+    padding: 1.5rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
