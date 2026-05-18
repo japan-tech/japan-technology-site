@@ -5,7 +5,6 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Add subtle shadow to header when user scrolls past the hero
   useEffect(() => {
     function onScroll() {
       setScrolled(window.scrollY > 40);
@@ -14,7 +13,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu after clicking a link
   function handleNavClick() {
     setMobileOpen(false);
   }
