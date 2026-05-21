@@ -62,8 +62,8 @@ export default function Contact() {
               <h3 className="contact-card-title">Email</h3>
             </div>
             <p className="contact-card-sub">For inquiries, quotes, and detailed requests.</p>
-            <a href="mailto:japantechnology@yandex.ru" className="contact-link">
-              japantechnology@yandex.ru
+            <a href="mailto:contact@japan-technology.com" className="contact-link">
+              contact@japan-technology.com
             </a>
           </div>
 
