@@ -1,18 +1,26 @@
 import { useState, useRef, useEffect } from 'react';
 import './Hero.css';
 
+const VIDEO_OPTS = 'q_auto:low,f_auto,vc_auto,br_1.5m,w_1280,c_limit';
+
 const VIDEOS = [
-  'https://res.cloudinary.com/dsf6b2tnd/video/upload/v1779257820/BazaEdit_ivxorl.mp4',
-  'https://res.cloudinary.com/dsf6b2tnd/video/upload/v1779257155/TripleDrift_unqaud.mp4',
-  'https://res.cloudinary.com/dsf6b2tnd/video/upload/f_mp4/v1779257155/WETCROWN_spiqbi.mov',
-  'https://res.cloudinary.com/dsf6b2tnd/video/upload/f_mp4/v1779257152/MK2DRIFT_fuzyb8.mov',
-  'https://res.cloudinary.com/dsf6b2tnd/video/upload/f_mp4/v1779257152/CROWNDRIFT_ybvg99.mov',
+  `https://res.cloudinary.com/dsf6b2tnd/video/upload/${VIDEO_OPTS}/v1779257820/BazaEdit_ivxorl.mp4`,
+  `https://res.cloudinary.com/dsf6b2tnd/video/upload/${VIDEO_OPTS}/v1779257155/TripleDrift_unqaud.mp4`,
+  `https://res.cloudinary.com/dsf6b2tnd/video/upload/${VIDEO_OPTS}/v1779257155/WETCROWN_spiqbi.mov`,
+  `https://res.cloudinary.com/dsf6b2tnd/video/upload/${VIDEO_OPTS}/v1779257152/MK2DRIFT_fuzyb8.mov`,
+  `https://res.cloudinary.com/dsf6b2tnd/video/upload/${VIDEO_OPTS}/v1779257152/CROWNDRIFT_ybvg99.mov`,
 ];
+
+// Cloudinary auto-generates a poster image from the video (first frame).
+// We use this for instant visual feedback while videos load.
+const POSTER_OPTS = 'so_0,w_1280,c_limit,q_auto,f_jpg';
+const POSTERS = VIDEOS.map(url => url.replace(VIDEO_OPTS, POSTER_OPTS).replace(/\.(mp4|mov)$/, '.jpg'));
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef(null);
+  const preloadRef = useRef(null);
 
   function handleVideoEnded() {
     setIsTransitioning(true);
@@ -30,6 +38,12 @@ export default function Hero() {
         playPromise.catch(() => {});
       }
     }
+    // Preload the NEXT video so the transition is seamless
+    const nextIndex = (currentIndex + 1) % VIDEOS.length;
+    if (preloadRef.current) {
+      preloadRef.current.src = VIDEOS[nextIndex];
+      preloadRef.current.load();
+    }
   }, [currentIndex]);
 
   return (
@@ -43,10 +57,12 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
+          poster={POSTERS[currentIndex]}
           onEnded={handleVideoEnded}
         >
           <source src={VIDEOS[currentIndex]} type="video/mp4" />
         </video>
+        <video ref={preloadRef} preload="auto" muted playsInline style={{ display: 'none' }}></video>
       </div>
       <div className="hero-overlay"></div>
       <div className="hero-content">
