@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import './Hero.css';
 
-const VIDEO_OPTS = 'q_auto:low,f_auto,vc_auto,br_2m,w_1280,c_limit';
+const VIDEO_OPTS = 'q_auto:low,f_auto,vc_auto,br_3m,w_1280,c_limit';
 
 const VIDEOS = [
   `https://res.cloudinary.com/dsf6b2tnd/video/upload/${VIDEO_OPTS}/v1779257820/BazaEdit_ivxorl.mp4`,
