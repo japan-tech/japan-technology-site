@@ -78,12 +78,7 @@ export default function RequestForm() {
           <p className="eyebrow">Request a Service</p>
           <h2 className="section-title">Tell us what you're<br />looking for.</h2>
           <p className="section-sub">Fill out the form with as much detail as you can — make, model, year, condition, budget. We'll reply within 24 hours with options or follow-up questions.</p>
-          <div className="request-direct">
-            <p className="request-direct-label">Prefer direct contact?</p>
-            <a href="mailto:contact@japan-technology.com" className="request-direct-link"><i className="ti ti-mail" aria-hidden="true"></i> contact@japan-technology.com</a>
-            <a href="https://wa.me/79147903057" target="_blank" rel="noopener noreferrer" className="request-direct-link"><i className="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp (any language)</a>
-          </div>
-        </div>
+         </div>
 
         <form className="request-form" onSubmit={handleSubmit}>
           <div className="form-row">

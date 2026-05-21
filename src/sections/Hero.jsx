@@ -67,7 +67,6 @@ export default function Hero() {
       <div className="hero-overlay"></div>
       <div className="hero-content">
         <img src="/logo/logo_clean_dark_bg_800w.png" alt="Japan Technology Co., Ltd." className="hero-logo" />
-        <p className="hero-tagline">EXPORTS FROM JAPAN TO THE WORLD</p>
       </div>
       <a href="#about" className="hero-scroll-cue" aria-label="Scroll to learn more">
         <span className="hero-scroll-label">SCROLL</span>
