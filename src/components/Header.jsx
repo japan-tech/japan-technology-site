@@ -22,7 +22,7 @@ export default function Header() {
       <div className="site-header-inner">
         <a href="#top" className="site-logo" aria-label="Japan Technology home" onClick={handleNavClick}>
           <img src="/logo/logo_clean_dark_bg_200w.png" alt="" className="site-logo-mark" />
-          <span className="site-logo-wordmark">JAPAN TECHNOLOGY</span></span>
+          <span className="site-logo-wordmark">JAPAN TECHNOLOGY</span>
         </a>
         <button className="site-nav-toggle" aria-label="Toggle menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(v => !v)}>
           <i className={`ti ${mobileOpen ? 'ti-x' : 'ti-menu-2'}`} aria-hidden="true"></i>
